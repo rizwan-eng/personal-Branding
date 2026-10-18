@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="glow" aria-hidden="true"></div>
+  <div class="fizz" id="fizz" aria-hidden="true"></div>
+
+  <header class="hero">
+    <p class="eyebrow">Portfolio</p>
+    <h1>Your <em>Name</em> Here</h1>
+    <p class="sub">Tap a photo to see the story behind it.</p>
+
+    <div class="switcher" role="group" aria-label="Layout">
+      <button class="chip is-on" data-layout="spiral">Spiral</button>
+      <button class="chip" data-layout="orbit">Orbit</button>
+      <button class="chip" data-layout="wave">Wave</button>
+    </div>
+  </header>
+
+  <main class="stage" id="stage" aria-label="Photo gallery">
+    <div class="core" aria-hidden="true"></div>
+
+    <!-- Caption panel (filled by script.js) -->
+    <aside class="panel" id="panel" aria-live="polite">
+      <div class="panel-top">
+        <span class="count" id="count">1 / 5</span>
+        <button class="icon-btn" id="close" aria-label="Close">&times;</button>
+      </div>
+      <h2 id="capTitle"></h2>
+      <p id="capText"></p>
+      <div class="panel-nav">
+        <button class="icon-btn" id="prev" aria-label="Previous photo">&larr;</button>
+        <button class="icon-btn" id="next" aria-label="Next photo">&rarr;</button>
+      </div>
+    </aside>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
