@@ -4,11 +4,11 @@
    - until a real file is found, a colourful placeholder shows
    ===================================================== */
 const photos = [
-  { src: "images/pic1.jpg", title: "First Moment",  caption: "Write one or two lines about this photo here. Where was it taken, what does it mean to you?" },
-  { src: "images/pic2.jpg", title: "Second Moment", caption: "Another short caption goes here. Keep it to a line or two so it reads nicely." },
-  { src: "images/pic3.jpg", title: "Third Moment",  caption: "Tell the story behind this one. A memory, a project, a place you love." },
-  { src: "images/pic4.jpg", title: "Fourth Moment", caption: "Captions appear with a typewriter effect when you click a photo." },
-  { src: "images/pic5.jpg", title: "Fifth Moment",  caption: "Swap these titles and captions for your own and you're done." }
+  { src: "images/pic1.png", title: "First Moment",  caption: "Write one or two lines about this photo here. Where was it taken, what does it mean to you?" },
+  { src: "images/pic2.png", title: "Second Moment", caption: "Another short caption goes here. Keep it to a line or two so it reads nicely." },
+  { src: "images/pic3.png", title: "Third Moment",  caption: "Tell the story behind this one. A memory, a project, a place you love." },
+  { src: "images/pic4.png", title: "Fourth Moment", caption: "Captions appear with a typewriter effect when you click a photo." },
+  { src: "images/pic5.png", title: "Fifth Moment",  caption: "Swap these titles and captions for your own and you're done." }
 ];
 
 /* ================= Code below: no need to edit ================= */
