@@ -1,4 +1,6 @@
 /* ===================== Blueberry + Cream Soda (professional) ===================== */
+/* Add this to your CSS file */
+
 :root {
   --ink: #15133f;
   --blue-900: #17144a;
@@ -19,6 +21,7 @@
   --head: "Fraunces", Georgia, "Times New Roman", serif;
   --body: "Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
 }
+
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 [hidden] { display: none !important; }
