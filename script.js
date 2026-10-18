@@ -7,14 +7,14 @@
    ===================================================================== */
 const PROFILE = {
   name: "Rizwan",
-  role: "Software Engineering Student",
+  role: "Software Engineer",
   field: "Software & Game Development"
 };
 
 const LOOKS = [
   {
     n: 1,
-    src: "images/look1.jpg",
+    src: "images/look1.png",
     name: "Business Formal",
     tag: "Required look",
     purpose: "Professional corporate look",
@@ -28,7 +28,7 @@ const LOOKS = [
   },
   {
     n: 2,
-    src: "images/look2.jpg",
+    src: "images/look2.png",
     name: "Skills in Action",
     tag: "Required look",
     purpose: "Business-casual + demonstrating a skill",
@@ -42,7 +42,7 @@ const LOOKS = [
   },
   {
     n: 3,
-    src: "images/look3.jpg",
+    src: "images/look3.png",
     name: "Field-Specific Wear",
     tag: "Required look",
     purpose: "Attire related to my career field",
@@ -56,7 +56,7 @@ const LOOKS = [
   },
   {
     n: 4,
-    src: "images/look4.jpg",
+    src: "images/look4.png",
     name: "Creative / Tech Professional",
     tag: "Required look",
     purpose: "Modern professional look",
@@ -70,7 +70,7 @@ const LOOKS = [
   },
   {
     n: 5,
-    src: "images/look5.jpg",
+    src: "images/look5.png",
     name: "Remote Work",
     tag: "Chosen look",
     purpose: "Working professionally from home",
@@ -84,7 +84,7 @@ const LOOKS = [
   },
   {
     n: 6,
-    src: "images/look6.jpg",
+    src: "images/look6.png",
     name: "Presentation / Interview",
     tag: "Chosen look",
     purpose: "Presenting ideas or interviewing",
