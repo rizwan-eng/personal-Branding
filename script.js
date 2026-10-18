@@ -19,7 +19,7 @@ const capText  = document.getElementById("capText");
 const countEl  = document.getElementById("count");
 const n = photos.length;
 
-let mode = "spiral";
+let mode = "orbit";
 let active = null;
 let typer = null;
 
@@ -69,12 +69,7 @@ function positions(W, H, S) {
     const f = n > 1 ? i / (n - 1) : 0;
     let x, y;
 
-    if (mode === "spiral") {
-      const k = 0.26 + 0.74 * f;              // radius grows outward
-      const ang = -Math.PI / 2 + i * 1.32;    // turn per photo
-      x = rx * k * Math.cos(ang);
-      y = ry * k * Math.sin(ang);
-    } else if (mode === "orbit") {
+    if (mode === "orbit") {
       const ang = -Math.PI / 2 + (i / n) * Math.PI * 2;
       x = rx * 0.9 * Math.cos(ang);
       y = ry * 0.82 * Math.sin(ang);
