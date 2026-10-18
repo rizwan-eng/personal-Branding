@@ -3,45 +3,92 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>My Portfolio</title>
+  <title>Professional Image Portfolio</title>
+  <meta name="description" content="A professional image portfolio showing how attire communicates skills, roles and personality across six career contexts." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="glow" aria-hidden="true"></div>
-  <div class="fizz" id="fizz" aria-hidden="true"></div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
 
-  <header class="hero">
-    <p class="eyebrow">Portfolio</p>
-    <h1>Your <em>Name</em> Here</h1>
-    <p class="sub">Tap a photo to see the story behind it.</p>
-
-    <div class="switcher" role="group" aria-label="Layout">
-      <button class="chip is-on" data-layout="orbit">Orbit</button>
-      <button class="chip" data-layout="wave">Wave</button>
-    </div>
+  <header class="topbar">
+    <a class="brand" href="#top" id="brandName">Portfolio</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#looks">Looks</a>
+      <a href="#summary">Summary</a>
+      <a href="#takeaways">Takeaways</a>
+    </nav>
+    <button class="btn btn-ghost" id="printBtn" type="button">Save as PDF</button>
   </header>
 
-  <main class="stage" id="stage" aria-label="Photo gallery">
-    <div class="core" aria-hidden="true"></div>
+  <!-- GALLERY: orbit / wave, click a photo for its details -->
+  <section class="gallery-section" id="looks">
+    <div class="fizz" id="fizz" aria-hidden="true"></div>
 
-    <!-- Caption panel (filled by script.js) -->
-    <aside class="panel" id="panel" aria-live="polite">
-      <div class="panel-top">
-        <span class="count" id="count">1 / 5</span>
-        <button class="icon-btn" id="close" aria-label="Close">&times;</button>
-      </div>
-      <h2 id="capTitle"></h2>
-      <p id="capText"></p>
-      <div class="panel-nav">
-        <button class="icon-btn" id="prev" aria-label="Previous photo">&larr;</button>
-        <button class="icon-btn" id="next" aria-label="Next photo">&rarr;</button>
-      </div>
-    </aside>
-  </main>
+    <div class="wrap" id="top">
+      <header class="intro">
+        <p class="eyebrow">Professional Image Portfolio</p>
+        <h1>Attire that communicates <em>skills, role and character</em></h1>
+        <p class="lede" id="heroLede"></p>
+        <p class="hint">Six looks &middot; 4 required + 2 chosen &middot; all five OCEAN traits covered. Click any photo to see its details.</p>
 
+        <div class="switcher" role="group" aria-label="Gallery layout">
+          <button class="chip-btn is-on" data-layout="orbit" type="button">Orbit</button>
+          <button class="chip-btn" data-layout="wave" type="button">Wave</button>
+        </div>
+      </header>
+    </div>
+
+    <div class="gallery" id="gallery">
+      <div class="stage" id="stage" aria-label="Portfolio photos">
+        <div class="core" aria-hidden="true"><span>Click<br />a photo</span></div>
+      </div>
+
+      <aside class="detail" id="detail" aria-live="polite" aria-label="Look details"></aside>
+    </div>
+  </section>
+
+  <!-- SUMMARY -->
+  <section class="section" id="summary">
+    <div class="wrap">
+      <p class="eyebrow dark">Summary</p>
+      <h2 class="section-title">Skills &amp; OCEAN trait map</h2>
+      <div class="table-wrap">
+        <table class="map">
+          <thead>
+            <tr><th>Look</th><th>What the attire communicates</th><th>Skill / role</th><th>OCEAN trait</th></tr>
+          </thead>
+          <tbody id="mapBody"></tbody>
+        </table>
+      </div>
+
+      <h3 class="sub-title">OCEAN quick guide</h3>
+      <div class="ocean-grid" id="oceanGrid"></div>
+    </div>
+  </section>
+
+  <!-- TAKEAWAYS -->
+  <section class="section dark" id="takeaways">
+    <div class="wrap">
+      <p class="eyebrow">Key takeaways</p>
+      <h2 class="section-title light">What this portfolio shows</h2>
+      <div class="take-grid" id="takeGrid"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <span id="footName"></span>
+      <a href="#top">Back to top &uarr;</a>
+    </div>
+  </footer>
+
+  <!-- Print-only sheet: every look with its details (built by script.js) -->
+  <section class="print-only" id="printSheet" aria-hidden="true"></section>
+
+  <input type="file" id="filePicker" accept="image/*" hidden />
   <script src="script.js"></script>
 </body>
 </html>

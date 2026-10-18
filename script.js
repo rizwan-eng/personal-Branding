@@ -1,108 +1,242 @@
-/* =====================================================
-   EDIT THIS PART: your 5 photos + captions
-   - put your images in an "images" folder next to index.html
-   - until a real file is found, a colourful placeholder shows
-   ===================================================== */
-const photos = [
-  { src: "images/pic1.png", title: "First Moment",  caption: "Write one or two lines about this photo here. Where was it taken, what does it mean to you?" },
-  { src: "images/pic2.png", title: "Second Moment", caption: "Another short caption goes here. Keep it to a line or two so it reads nicely." },
-  { src: "images/pic3.png", title: "Third Moment",  caption: "Tell the story behind this one. A memory, a project, a place you love." },
-  { src: "images/pic4.png", title: "Fourth Moment", caption: "Captions appear with a typewriter effect when you click a photo." },
-  { src: "images/pic5.png", title: "Fifth Moment",  caption: "Swap these titles and captions for your own and you're done." }
+/* =====================================================================
+   EDIT THIS SECTION ONLY
+   - Your details
+   - Photos: put images in an "images" folder (look1.jpg ... look6.jpg),
+     or change the `src` of any look below. A placeholder shows until then.
+   - Captions are kept to 1-2 sentences, as the assignment requires.
+   ===================================================================== */
+const PROFILE = {
+  name: "Rizwan",
+  role: "Software Engineering Student",
+  field: "Software & Game Development"
+};
+
+const LOOKS = [
+  {
+    n: 1,
+    src: "images/look1.jpg",
+    name: "Business Formal",
+    tag: "Required look",
+    purpose: "Professional corporate look",
+    a: ["OCEAN trait", "Conscientiousness"],
+    b: ["Skill", "Professionalism & attention to detail"],
+    caption:
+      "A tailored dark suit, crisp white shirt and polished shoes communicate reliability, respect for the client and attention to detail. This look represents Conscientiousness: being prepared, punctual and accountable in a corporate setting.",
+    outfit: ["Navy or charcoal tailored suit", "Crisp shirt, tie and leather shoes", "Neat grooming, minimal accessories"],
+    setting: "Plain office or neutral wall, standing tall with a relaxed, confident posture.",
+    map: { message: "Reliable, detail-focused", skill: "Professionalism", trait: "Conscientiousness" }
+  },
+  {
+    n: 2,
+    src: "images/look2.jpg",
+    name: "Skills in Action",
+    tag: "Required look",
+    purpose: "Business-casual + demonstrating a skill",
+    a: ["OCEAN trait", "Agreeableness"],
+    b: ["Skill", "Collaborative problem-solving"],
+    caption:
+      "Business-casual layers with sleeves rolled up signal approachability and a readiness to work. While walking a teammate through code, I demonstrate collaborative problem-solving, which reflects Agreeableness and clear technical communication.",
+    outfit: ["Button-up shirt or polo, sleeves rolled", "Chinos or dark smart jeans", "Clean, simple shoes"],
+    setting: "Mid-action: explaining code on a laptop or whiteboard with a teammate.",
+    map: { message: "Approachable, hands-on", skill: "Collaborative problem-solving", trait: "Agreeableness" }
+  },
+  {
+    n: 3,
+    src: "images/look3.jpg",
+    name: "Field-Specific Wear",
+    tag: "Required look",
+    purpose: "Attire related to my career field",
+    a: ["Role", "Software / Game Developer"],
+    b: ["Skill", "Technical expertise (C#, Unity)"],
+    caption:
+      "Comfortable dev-studio wear, such as a plain hoodie, jeans and a conference lanyard, shows I fit tech-team culture and value function over formality. It represents the Software/Game Developer role and the technical skills behind it, like C# and Unity.",
+    outfit: ["Plain hoodie, tee or polo", "Jeans and comfortable sneakers", "Lanyard, headphones or dev swag"],
+    setting: "At a workstation with code or a game editor visible on screen.",
+    map: { message: "Fits tech-team culture", skill: "Software / Game Developer", trait: "Role-focused" }
+  },
+  {
+    n: 4,
+    src: "images/look4.jpg",
+    name: "Creative / Tech Professional",
+    tag: "Required look",
+    purpose: "Modern professional look",
+    a: ["OCEAN trait", "Openness"],
+    b: ["Skill", "Creative problem-solving & innovation"],
+    caption:
+      "A fitted blazer over a plain tee, a minimalist watch and clean sneakers communicate innovation, confidence and an eye for design. This look represents Openness to Experience: creative problem-solving and comfort with new ideas and technology.",
+    outfit: ["Fitted blazer over plain tee", "Dark jeans or tapered trousers", "Clean sneakers, minimalist watch"],
+    setting: "Modern workspace, studio or co-working space with natural light.",
+    map: { message: "Innovative, design-aware", skill: "Creative problem-solving", trait: "Openness" }
+  },
+  {
+    n: 5,
+    src: "images/look5.jpg",
+    name: "Remote Work",
+    tag: "Chosen look",
+    purpose: "Working professionally from home",
+    a: ["OCEAN trait", "Emotional Stability"],
+    b: ["Skill", "Self-management & virtual communication"],
+    caption:
+      "A polished top and a tidy, uncluttered background show I treat video calls as seriously as in-person meetings. It represents Emotional Stability and self-management: staying calm, organized and productive without direct supervision.",
+    outfit: ["Solid-color collared shirt or knit top", "Headset or clean earbuds", "Neat, well-lit home-office backdrop"],
+    setting: "Seated at a desk, framed chest-up like a video call, camera at eye level.",
+    map: { message: "Polished and self-managed", skill: "Virtual communication", trait: "Emotional Stability" }
+  },
+  {
+    n: 6,
+    src: "images/look6.jpg",
+    name: "Presentation / Interview",
+    tag: "Chosen look",
+    purpose: "Presenting ideas or interviewing",
+    a: ["OCEAN trait", "Extraversion"],
+    b: ["Skill", "Public speaking & communication"],
+    caption:
+      "A well-fitted blazer, neutral colors and a confident posture communicate preparedness and credibility before I say a word. It represents Extraversion and communication skills: presenting ideas clearly and engaging an audience or interviewer.",
+    outfit: ["Fitted blazer in a neutral palette", "Pressed shirt, minimal accessories", "Polished shoes, portfolio in hand"],
+    setting: "Standing at a screen or podium, or seated across a desk, gesturing naturally.",
+    map: { message: "Prepared and credible", skill: "Public speaking", trait: "Extraversion" }
+  }
 ];
 
-/* ================= Code below: no need to edit ================= */
-const stage   = document.getElementById("stage");
-const panel   = document.getElementById("panel");
-const capTitle = document.getElementById("capTitle");
-const capText  = document.getElementById("capText");
-const countEl  = document.getElementById("count");
-const n = photos.length;
+const OCEAN = [
+  ["Openness", "Curious, creative, open to new ideas"],
+  ["Conscientiousness", "Organized, dependable, detail-focused"],
+  ["Extraversion", "Confident, expressive, energized by people"],
+  ["Agreeableness", "Cooperative, respectful, team-minded"],
+  ["Emotional Stability", "Calm, resilient, steady under pressure"]
+];
+
+const TAKEAWAYS = [
+  ["Attire is communication", "Every outfit sends a message about reliability, creativity or confidence before I say a word."],
+  ["Context shapes the choice", "Formal, business-casual, field-specific and remote settings each call for a different level of polish."],
+  ["My core stays consistent", "Skills and character remain the same; what changes is how I present them to each audience."]
+];
+
+/* ============== Code below: no need to edit ============== */
+const $ = (sel, root = document) => root.querySelector(sel);
+const pad = n => String(n).padStart(2, "0");
+const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+const N = LOOKS.length;
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const gallery = $("#gallery");
+const stage = $("#stage");
+const detail = $("#detail");
+const picker = $("#filePicker");
 
 let mode = "orbit";
 let active = null;
-let typer = null;
 
-/* ---------- placeholder image (inline SVG) ---------- */
-function placeholder(i) {
-  const pairs = [["#4f5bd9", "#f2c883"], ["#2b2b85", "#fff4dc"], ["#98a4ff", "#d08f43"], ["#17144a", "#f2c883"], ["#4f5bd9", "#fff4dc"]];
-  const [a, b] = pairs[i % pairs.length];
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500">
-    <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient></defs>
-    <rect width="400" height="500" fill="url(#g)"/>
-    <circle cx="300" cy="120" r="70" fill="#fff4dc" opacity=".25"/>
-    <circle cx="110" cy="380" r="110" fill="#0f0d2e" opacity=".18"/>
-    <text x="200" y="270" font-family="Georgia,serif" font-size="64" fill="#fff4dc" text-anchor="middle">${i + 1}</text>
+/* ---------- static text ---------- */
+document.title = `${PROFILE.name} | Professional Image Portfolio`;
+$("#brandName").textContent = PROFILE.name;
+$("#heroLede").textContent = `${PROFILE.name}  |  ${PROFILE.role}  |  Career field: ${PROFILE.field}`;
+$("#footName").textContent = `${PROFILE.name}  |  Professional Image Portfolio`;
+
+/* ---------- placeholder (inline SVG, 4:5) ---------- */
+function placeholder(look) {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+    <rect width="800" height="1000" fill="#E9E7F8"/>
+    <rect x="28" y="28" width="744" height="944" rx="18" fill="none" stroke="#4F5BD9" stroke-width="4" stroke-dasharray="26 16"/>
+    <circle cx="400" cy="300" r="110" fill="#B9C0FF"/>
+    <path d="M170 700 A230 230 0 0 1 630 700 Z" fill="#B9C0FF"/>
+    <text x="400" y="780" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#4F5BD9" text-anchor="middle" letter-spacing="4">LOOK ${pad(look.n)}</text>
+    <text x="400" y="830" font-family="Arial,sans-serif" font-size="36" font-weight="700" fill="#2B2B85" text-anchor="middle">${look.name.replace("&", "&amp;")}</text>
+    <text x="400" y="895" font-family="Arial,sans-serif" font-size="26" fill="#2B2B85" text-anchor="middle">Add your photo in the details panel</text>
   </svg>`;
   return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
 }
 
-/* ---------- build cards ---------- */
-const cards = photos.map((p, i) => {
+/* ---------- saved photos (best effort, this browser only) ---------- */
+const keyFor = n => `portfolio-photo-${n}`;
+const loadSaved = n => { try { return localStorage.getItem(keyFor(n)); } catch { return null; } };
+const save = (n, data) => { try { localStorage.setItem(keyFor(n), data); } catch { /* storage full or blocked */ } };
+const clearSaved = n => { try { localStorage.removeItem(keyFor(n)); } catch { /* ignore */ } };
+
+/* ---------- build photo cards ---------- */
+const cards = LOOKS.map((l, i) => {
   const btn = document.createElement("button");
+  btn.type = "button";
   btn.className = "card";
-  btn.setAttribute("aria-label", `Open photo ${i + 1}: ${p.title}`);
+  btn.title = l.name;
+  btn.setAttribute("aria-label", `Open look ${l.n}: ${l.name}`);
   btn.innerHTML = `
-    <span class="float" style="animation-delay:${-i * 0.9}s">
+    <span class="float" style="animation-delay:${-i * 0.8}s">
       <span class="frame">
-        <img src="${p.src}" alt="${p.title}" draggable="false" />
+        <img alt="${l.name}" draggable="false" />
         <span class="shine"></span>
+        <span class="num">${pad(l.n)}</span>
       </span>
-    </span>`;
-  btn.querySelector("img").addEventListener("error", e => {
-    e.target.onerror = null;
-    e.target.src = placeholder(i);
-  });
+    </span>
+    <span class="tag">${l.name}</span>`;
   btn.addEventListener("click", () => (active === i ? closeCard() : openCard(i)));
   stage.appendChild(btn);
   return btn;
 });
+const imgs = cards.map(c => $("img", c));
+
+function showPlaceholder(i) { imgs[i].onerror = null; imgs[i].src = placeholder(LOOKS[i]); }
+function showReal(i, src) { imgs[i].onerror = () => showPlaceholder(i); imgs[i].src = src; }
+LOOKS.forEach((l, i) => { const s = loadSaved(l.n); showReal(i, s || l.src); });
 
 /* ---------- layouts ---------- */
+const isNarrow = () => window.innerWidth < 860;
+
 function positions(W, H, S) {
+  const narrow = isNarrow();
   const rx = W / 2 - S * 0.62;
   const ry = H / 2 - S * 0.72;
-  const tilts = [-6, 5, -3, 7, -5];
-  const out = [];
-
-  for (let i = 0; i < n; i++) {
-    const f = n > 1 ? i / (n - 1) : 0;
+  const tilts = [-6, 5, -3, 7, -5, 4];
+  return LOOKS.map((_, i) => {
+    const f = N > 1 ? i / (N - 1) : 0;
     let x, y;
-
     if (mode === "orbit") {
-      const ang = -Math.PI / 2 + (i / n) * Math.PI * 2;
+      const ang = -Math.PI / 2 + (i / N) * Math.PI * 2;
       x = rx * 0.9 * Math.cos(ang);
-      y = ry * 0.82 * Math.sin(ang);
-    } else { // wave
+      y = ry * 0.95 * Math.sin(ang);
+    } else if (narrow) {            // wave runs top to bottom on phones
+      x = Math.sin(f * Math.PI * 2) * rx * 0.55;
+      y = (f - 0.5) * 2 * ry * 0.92;
+    } else {                        // wave runs left to right
       x = (f - 0.5) * 2 * rx * 0.95;
       y = Math.sin(f * Math.PI * 2) * ry * 0.5;
     }
-    out.push({ x, y, r: tilts[i % tilts.length], s: 1 });
-  }
-  return out;
+    return { x, y, r: tilts[i % tilts.length], s: 1 };
+  });
 }
 
 function layout(delayed = false) {
   const W = stage.clientWidth, H = stage.clientHeight;
-  const S = Math.max(96, Math.min(220, Math.min(W * 0.26, H * 0.3)));
+  if (!W || !H) return;
+  const narrow = isNarrow();
+  const S = narrow ? clamp(Math.min(W * 0.27, H * 0.2), 84, 170) : clamp(Math.min(W * 0.17, H * 0.24), 90, 190);
   stage.style.setProperty("--size", S + "px");
-  stage.classList.toggle("has-active", active !== null);
+  gallery.classList.toggle("has-active", active !== null);
 
   const pos = positions(W, H, S);
+  const others = LOOKS.map((_, i) => i).filter(i => i !== active);
 
   cards.forEach((c, i) => {
     c.style.transitionDelay = delayed ? `${i * 0.12}s` : "0s";
     c.classList.add("ready");
     c.classList.toggle("is-active", active === i);
-    c.classList.toggle("is-dim", active !== null && active !== i);
+    c.classList.toggle("is-thumb", active !== null && active !== i);
 
     let p = pos[i];
-    if (active === i) {
-      const availH = H - 190;                           // room left above the caption
-      const sc = Math.min((W * 0.86) / S, availH / (S * 1.25), 3.1);
-      p = { x: 0, y: (availH - H) / 2 + 6, r: 0, s: sc };
-    } else if (active !== null) {
-      p = { ...p, s: 0.6 };
+    if (active !== null) {
+      const ts = narrow ? 0.46 : 0.34;                       // thumbnail scale
+      const thumbH = S * ts * 1.25;
+      const stripH = thumbH + 26;
+      const availH = H - stripH - 12;
+      const cx = narrow ? 0 : -W * 0.245;                    // left half of the stage on desktop
+      if (active === i) {
+        const sc = Math.min((narrow ? W * 0.62 : W * 0.4) / S, availH / (S * 1.25), 2.6);
+        p = { x: cx, y: -H / 2 + 8 + availH / 2, r: 0, s: sc };
+      } else {
+        const k = others.indexOf(i);
+        const gap = S * ts * 1.3;
+        p = { x: cx + (k - (others.length - 1) / 2) * gap, y: H / 2 - thumbH / 2 - 10, r: 0, s: ts };
+      }
     }
     c.style.setProperty("--x", p.x + "px");
     c.style.setProperty("--y", p.y + "px");
@@ -111,78 +245,217 @@ function layout(delayed = false) {
   });
 }
 
-/* ---------- open / close caption ---------- */
-function typeWrite(text) {
-  clearInterval(typer);
-  capText.textContent = "";
-  capText.classList.remove("done");
-  let k = 0;
-  typer = setInterval(() => {
-    capText.textContent = text.slice(0, ++k);
-    if (k >= text.length) { clearInterval(typer); capText.classList.add("done"); }
-  }, 22);
+/* ---------- details panel ---------- */
+function renderDetail(i) {
+  const l = LOOKS[i];
+  const saved = !!loadSaved(l.n);
+  detail.innerHTML = `
+    <div class="d-top">
+      <span class="chip ${l.tag.startsWith("Req") ? "chip-req" : "chip-chosen"}">Look ${pad(l.n)} &middot; ${l.tag}</span>
+      <span class="count">${i + 1} / ${N}</span>
+      <button class="icon-btn" data-act="close" type="button" aria-label="Close details">&times;</button>
+    </div>
+    <h2>${l.name}</h2>
+    <p class="purpose">${l.purpose}</p>
+
+    <div class="info">
+      <div class="info-card info-a"><span>${l.a[0]}</span><strong>${l.a[1]}</strong></div>
+      <div class="info-card info-b"><span>${l.b[0]}</span><strong>${l.b[1]}</strong></div>
+    </div>
+
+    <blockquote class="caption">
+      <span class="label">Caption</span>
+      <p>${l.caption}</p>
+    </blockquote>
+
+    <div class="details">
+      <div>
+        <h3>Outfit &amp; styling</h3>
+        <ul>${l.outfit.map(o => `<li>${o}</li>`).join("")}</ul>
+      </div>
+      <div>
+        <h3>Photo setting</h3>
+        <p>${l.setting}</p>
+      </div>
+    </div>
+
+    <div class="d-actions">
+      <button class="icon-btn" data-act="prev" type="button" aria-label="Previous look">&larr;</button>
+      <button class="icon-btn" data-act="next" type="button" aria-label="Next look">&rarr;</button>
+      <span class="spacer"></span>
+      <button class="btn btn-small" data-act="add" type="button">Add / change photo</button>
+      <button class="btn btn-small btn-ghost-light" data-act="reset" type="button" ${saved ? "" : "hidden"}>Remove</button>
+    </div>`;
 }
 
 function openCard(i) {
   active = i;
-  capTitle.textContent = photos[i].title;
-  countEl.textContent = `${i + 1} / ${n}`;
-  panel.classList.add("is-open");
-  typeWrite(photos[i].caption);
+  renderDetail(i);
+  detail.classList.remove("is-open");
+  void detail.offsetWidth;                  // restart the pop-in animation
+  detail.classList.add("is-open");
   layout();
+  // bring the photo stage fully into view so the photo and its details are seen together
+  const r = stage.getBoundingClientRect();
+  if (r.top > 90 || r.top < 40 || (!isNarrow() && r.bottom > window.innerHeight)) {
+    gallery.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+  }
 }
 
 function closeCard() {
   active = null;
-  clearInterval(typer);
-  panel.classList.remove("is-open");
+  detail.classList.remove("is-open");
   layout();
 }
 
-document.getElementById("close").addEventListener("click", closeCard);
-document.getElementById("next").addEventListener("click", () => openCard(((active ?? -1) + 1) % n));
-document.getElementById("prev").addEventListener("click", () => openCard(((active ?? 0) - 1 + n) % n));
+detail.addEventListener("click", e => {
+  const btn = e.target.closest("[data-act]");
+  if (!btn || active === null) return;
+  const act = btn.dataset.act;
+  if (act === "close") closeCard();
+  if (act === "next") openCard((active + 1) % N);
+  if (act === "prev") openCard((active - 1 + N) % N);
+  if (act === "add") { picker.value = ""; picker.click(); }
+  if (act === "reset") {
+    clearSaved(LOOKS[active].n);
+    showReal(active, LOOKS[active].src);
+    btn.hidden = true;
+  }
+});
 
 window.addEventListener("keydown", e => {
   if (e.key === "Escape") closeCard();
-  if (active !== null && e.key === "ArrowRight") openCard((active + 1) % n);
-  if (active !== null && e.key === "ArrowLeft")  openCard((active - 1 + n) % n);
+  if (active !== null && e.key === "ArrowRight") openCard((active + 1) % N);
+  if (active !== null && e.key === "ArrowLeft") openCard((active - 1 + N) % N);
 });
 
-/* click empty space to close */
-stage.addEventListener("click", e => {
-  if (e.target === stage && active !== null) closeCard();
+/* click empty space on the stage to close */
+stage.addEventListener("click", e => { if ((e.target === stage || e.target.closest(".core")) && active !== null) closeCard(); });
+
+/* ---------- local photo picker (resizes before saving) ---------- */
+picker.addEventListener("change", () => {
+  const file = picker.files && picker.files[0];
+  if (!file || active === null) return;
+  const idx = active;
+  const reader = new FileReader();
+  reader.onload = () => {
+    const tmp = new Image();
+    tmp.onload = () => {
+      const max = 1100, scale = Math.min(1, max / Math.max(tmp.width, tmp.height));
+      const c = document.createElement("canvas");
+      c.width = Math.round(tmp.width * scale);
+      c.height = Math.round(tmp.height * scale);
+      c.getContext("2d").drawImage(tmp, 0, 0, c.width, c.height);
+      const data = c.toDataURL("image/jpeg", 0.86);
+      save(LOOKS[idx].n, data);
+      showReal(idx, data);
+      const rb = $('[data-act="reset"]', detail);
+      if (rb && active === idx) rb.hidden = false;
+    };
+    tmp.src = reader.result;
+  };
+  reader.readAsDataURL(file);
 });
 
 /* ---------- layout switcher ---------- */
-document.querySelectorAll(".chip").forEach(chip => {
+document.querySelectorAll(".chip-btn").forEach(chip => {
   chip.addEventListener("click", () => {
-    document.querySelectorAll(".chip").forEach(c => c.classList.remove("is-on"));
+    document.querySelectorAll(".chip-btn").forEach(c => c.classList.remove("is-on"));
     chip.classList.add("is-on");
     mode = chip.dataset.layout;
     if (active !== null) closeCard(); else layout();
   });
 });
 
-window.addEventListener("resize", () => layout());
+/* relayout when the stage changes size (window resize, mobile panel) */
+if ("ResizeObserver" in window) new ResizeObserver(() => layout()).observe(stage);
+else window.addEventListener("resize", () => layout());
 
-/* ---------- background fizz bubbles ---------- */
-const fizz = document.getElementById("fizz");
-for (let i = 0; i < 34; i++) {
+/* ---------- background fizz ---------- */
+const fizz = $("#fizz");
+for (let i = 0; i < 26; i++) {
   const b = document.createElement("span");
-  const size = 6 + Math.random() * 26;
+  const size = 6 + Math.random() * 24;
   b.style.cssText = `left:${Math.random() * 100}%;width:${size}px;height:${size}px;` +
-                    `animation-duration:${9 + Math.random() * 14}s;animation-delay:${-Math.random() * 20}s;`;
+                    `animation-duration:${10 + Math.random() * 14}s;animation-delay:${-Math.random() * 20}s;`;
   fizz.appendChild(b);
 }
 
-/* ---------- cursor glow ---------- */
-const glow = document.querySelector(".glow");
-window.addEventListener("pointermove", e => {
-  glow.style.setProperty("--gx", e.clientX + "px");
-  glow.style.setProperty("--gy", e.clientY + "px");
-});
+/* ---------- summary table, OCEAN guide, takeaways ---------- */
+$("#mapBody").innerHTML = LOOKS.map(l => `
+  <tr>
+    <td data-label="Look"><strong>${pad(l.n)} &nbsp;${l.name}</strong></td>
+    <td data-label="Attire communicates">${l.map.message}</td>
+    <td data-label="Skill / role">${l.map.skill}</td>
+    <td data-label="OCEAN trait"><span class="trait">${l.map.trait}</span></td>
+  </tr>`).join("");
+
+$("#oceanGrid").innerHTML = OCEAN.map(o => `
+  <div class="ocean-card reveal"><strong>${o[0]}</strong><span>${o[1]}</span></div>`).join("");
+
+$("#takeGrid").innerHTML = TAKEAWAYS.map((t, i) => `
+  <div class="take reveal" style="--d:${i * 90}ms">
+    <span class="take-num">${i + 1}</span>
+    <h3>${t[0]}</h3>
+    <p>${t[1]}</p>
+  </div>`).join("");
+
+/* ---------- print sheet (all looks + details, used by "Save as PDF") ---------- */
+$("#printSheet").innerHTML = `<h1>${PROFILE.name} | Professional Image Portfolio</h1>` + LOOKS.map(l => `
+  <article class="print-look">
+    <img alt="" data-n="${l.n}" />
+    <div>
+      <p class="p-tag">Look ${pad(l.n)} &middot; ${l.tag}</p>
+      <h2>${l.name}</h2>
+      <p class="p-purpose">${l.purpose}</p>
+      <p><strong>${l.a[0]}:</strong> ${l.a[1]} &nbsp;|&nbsp; <strong>${l.b[0]}:</strong> ${l.b[1]}</p>
+      <p class="p-cap"><em>${l.caption}</em></p>
+      <p><strong>Outfit &amp; styling:</strong> ${l.outfit.join("; ")}.</p>
+      <p><strong>Photo setting:</strong> ${l.setting}</p>
+    </div>
+  </article>`).join("");
+
+function syncPrintImages() {
+  document.querySelectorAll("#printSheet img").forEach(img => { img.src = imgs[Number(img.dataset.n) - 1].src; });
+}
+window.addEventListener("beforeprint", syncPrintImages);
+$("#printBtn").addEventListener("click", () => { syncPrintImages(); window.print(); });
+
+/* ---------- scroll reveal, progress bar, active nav ---------- */
+const revealEls = document.querySelectorAll(".reveal");
+if ("IntersectionObserver" in window && !reduceMotion) {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+} else {
+  revealEls.forEach(el => el.classList.add("in"));
+}
+
+const bar = $("#progress");
+function onScroll() {
+  const h = document.documentElement;
+  const p = h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight);
+  bar.style.transform = `scaleX(${clamp(p, 0, 1)})`;
+}
+window.addEventListener("scroll", onScroll, { passive: true });
+onScroll();
+
+const navLinks = [...document.querySelectorAll(".nav a")];
+const targets = navLinks.map(a => $(a.getAttribute("href")));
+if ("IntersectionObserver" in window) {
+  const navIO = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        navLinks.forEach(a => a.removeAttribute("aria-current"));
+        const i = targets.indexOf(en.target);
+        if (i > -1) navLinks[i].setAttribute("aria-current", "true");
+      }
+    });
+  }, { rootMargin: "-45% 0px -50% 0px" });
+  targets.forEach(t => t && navIO.observe(t));
+}
 
 /* ---------- intro: photos fly out from the centre ---------- */
 requestAnimationFrame(() => setTimeout(() => layout(true), 150));
-setTimeout(() => cards.forEach(c => (c.style.transitionDelay = "0s")), 2200);
+setTimeout(() => cards.forEach(c => (c.style.transitionDelay = "0s")), 2400);
