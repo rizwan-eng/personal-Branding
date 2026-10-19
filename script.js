@@ -21,7 +21,7 @@ const LOOKS = [
     a: ["OCEAN trait", "Conscientiousness"],
     b: ["Skill", "Professionalism & attention to detail"],
     caption:
-      "A tailored light grey suit jacket, crisp black shirt, and a structured fit communicate reliability and attention to detail. This look represents Conscientiousness: being prepared, punctual and accountable in a formal setting.",
+      "This look represents Conscientiousness: being prepared, punctual and accountable in a formal setting.",
     outfit: [
       "Light grey tailored suit jacket",
       "Black button-down shirt",
@@ -39,7 +39,7 @@ const LOOKS = [
     a: ["OCEAN trait", "Agreeableness"],
     b: ["Skill", "Collaborative problem-solving"],
     caption:
-      "A smart dark button-up shirt with a projector screen code background signals approachability and a readiness to work. While presenting code and explaining technical concepts in a university lab setting, I demonstrate collaborative problem-solving, which reflects Agreeableness and clear technical communication.",
+      "I demonstrate collaborative problem-solving, which reflects Agreeableness and clear technical communication.",
     outfit: [
       "Dark button-up shirt with rolled sleeves",
       "Dark casual trousers",
@@ -57,7 +57,7 @@ const LOOKS = [
     a: ["Role", "Software / Game Developer"],
     b: ["Skill", "Technical expertise (C#, Unity)"],
     caption:
-      "Comfortable dev-studio wear, such as a navy blue hoodie, dark jeans and an official developer ID lanyard, shows I fit tech-team culture and value function over formality. It represents the Software/Game Developer role and the technical skills behind it, like C# and Unity.",
+      "It represents the Software/Game Developer role and the technical skills behind it, like C# and Unity.",
     outfit: [
       "Navy blue hoodie",
       "Dark jeans",
@@ -75,7 +75,7 @@ const LOOKS = [
     a: ["OCEAN trait", "Openness"],
     b: ["Skill", "Creative problem-solving & innovation"],
     caption:
-      "A fitted dark blazer over a plain white tee, dark jeans and white sneakers communicate innovation, confidence and an eye for design. This look represents Openness to Experience: creative problem-solving and comfort with new ideas and technology in an open co-working space.",
+      "This look represents Openness to Experience: creative problem-solving and comfort with new ideas and technology in an open co-working space.",
     outfit: [
       "Dark navy blazer over plain white tee",
       "Dark blue denim jeans",
@@ -93,7 +93,7 @@ const LOOKS = [
     a: ["OCEAN trait", "Neuroticism"],
     b: ["Skill", "Self-management & virtual communication"],
     caption:
-      "A clean white button-down shirt paired with a tidy, book-filled library backdrop shows I treat tasks and video collaboration as seriously as in-person meetings. It represents Emotional Stability and self-management: staying calm, organized and productive in an academic or study-from-home environment.",
+      "It represents Neuroticism and self-management: staying calm, organized and productive in an academic or study-from-home environment.",
     outfit: [
       "Crisp white button-down collared shirt",
       "Dark blue trousers",
@@ -111,7 +111,7 @@ const LOOKS = [
     a: ["OCEAN trait", "Extraversion"],
     b: ["Skill", "Public speaking & communication"],
     caption:
-      "A vibrant blue button-up shirt with rolled sleeves and a confident posture communicate preparedness and credibility. It represents Extraversion and communication skills: presenting ideas clearly, engaging an audience, and maintaining an active classroom or interview presence.",
+      "It represents Extraversion and communication skills: presenting ideas clearly, engaging an audience, and maintaining an active classroom or interview presence.",
     outfit: [
       "Vibrant blue long-sleeve shirt with rolled cuffs",
       "Metallic wristwatch",
