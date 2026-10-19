@@ -90,7 +90,7 @@ const LOOKS = [
     name: "Remote Work",
     tag: "Chosen look",
     purpose: "Working professionally from home",
-    a: ["OCEAN trait", "Emotional Stability"],
+    a: ["OCEAN trait", "Neuroticism"],
     b: ["Skill", "Self-management & virtual communication"],
     caption:
       "A clean white button-down shirt paired with a tidy, book-filled library backdrop shows I treat tasks and video collaboration as seriously as in-person meetings. It represents Emotional Stability and self-management: staying calm, organized and productive in an academic or study-from-home environment.",
@@ -100,7 +100,7 @@ const LOOKS = [
       "Classic wristwatch"
     ],
     setting: "Seated at a desk with a laptop against a richly stocked wooden bookshelf filled with library books.",
-    map: { message: "Polished and self-managed", skill: "Virtual communication", trait: "Emotional Stability" }
+    map: { message: "Polished and self-managed", skill: "Virtual communication", trait: "Neuroticism" }
   },
   {
     n: 6,
@@ -127,7 +127,7 @@ const OCEAN = [
   ["Conscientiousness", "Organized, dependable, detail-focused"],
   ["Extraversion", "Confident, expressive, energized by people"],
   ["Agreeableness", "Cooperative, respectful, team-minded"],
-  ["Emotional Stability", "Calm, resilient, steady under pressure"]
+  ["Neuroticism", "Calm, resilient, steady under pressure"]
 ];
 
 const TAKEAWAYS = [
