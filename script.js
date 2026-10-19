@@ -1,7 +1,7 @@
 /* =====================================================================
    EDIT THIS SECTION ONLY
    - Your details
-   - Photos: put images in an "images" folder (look1.jpg ... look6.jpg),
+   - Photos: put images in an "images" folder (look1.png ... look6.png),
      or change the `src` of any look below. A placeholder shows until then.
    - Captions are kept to 1-2 sentences, as the assignment requires.
    ===================================================================== */
@@ -146,7 +146,6 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
 const gallery = $("#gallery");
 const stage = $("#stage");
 const detail = $("#detail");
-const picker = $("#filePicker");
 
 let mode = "orbit";
 let active = null;
@@ -166,16 +165,10 @@ function placeholder(look) {
     <path d="M170 700 A230 230 0 0 1 630 700 Z" fill="#B9C0FF"/>
     <text x="400" y="780" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#4F5BD9" text-anchor="middle" letter-spacing="4">LOOK ${pad(look.n)}</text>
     <text x="400" y="830" font-family="Arial,sans-serif" font-size="36" font-weight="700" fill="#2B2B85" text-anchor="middle">${look.name.replace("&", "&amp;")}</text>
-    <text x="400" y="895" font-family="Arial,sans-serif" font-size="26" fill="#2B2B85" text-anchor="middle">Add your photo in the details panel</text>
+    <text x="400" y="895" font-family="Arial,sans-serif" font-size="26" fill="#2B2B85" text-anchor="middle">Save your photo as ${look.src}</text>
   </svg>`;
   return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
 }
-
-/* ---------- saved photos (best effort, this browser only) ---------- */
-const keyFor = n => `portfolio-photo-${n}`;
-const loadSaved = n => { try { return localStorage.getItem(keyFor(n)); } catch { return null; } };
-const save = (n, data) => { try { localStorage.setItem(keyFor(n), data); } catch { /* storage full or blocked */ } };
-const clearSaved = n => { try { localStorage.removeItem(keyFor(n)); } catch { /* ignore */ } };
 
 /* ---------- build photo cards ---------- */
 const cards = LOOKS.map((l, i) => {
@@ -201,7 +194,7 @@ const imgs = cards.map(c => $("img", c));
 
 function showPlaceholder(i) { imgs[i].onerror = null; imgs[i].src = placeholder(LOOKS[i]); }
 function showReal(i, src) { imgs[i].onerror = () => showPlaceholder(i); imgs[i].src = src; }
-LOOKS.forEach((l, i) => { const s = loadSaved(l.n); showReal(i, s || l.src); });
+LOOKS.forEach((l, i) => showReal(i, l.src));
 
 /* ---------- layouts ---------- */
 const isNarrow = () => window.innerWidth < 860;
@@ -272,7 +265,6 @@ function layout(delayed = false) {
 /* ---------- details panel ---------- */
 function renderDetail(i) {
   const l = LOOKS[i];
-  const saved = !!loadSaved(l.n);
   detail.innerHTML = `
     <div class="d-top">
       <span class="chip ${l.tag.startsWith("Req") ? "chip-req" : "chip-chosen"}">Look ${pad(l.n)} &middot; ${l.tag}</span>
@@ -306,9 +298,6 @@ function renderDetail(i) {
     <div class="d-actions">
       <button class="icon-btn" data-act="prev" type="button" aria-label="Previous look">&larr;</button>
       <button class="icon-btn" data-act="next" type="button" aria-label="Next look">&rarr;</button>
-      <span class="spacer"></span>
-      <button class="btn btn-small" data-act="add" type="button">Add / change photo</button>
-      <button class="btn btn-small btn-ghost-light" data-act="reset" type="button" ${saved ? "" : "hidden"}>Remove</button>
     </div>`;
 }
 
@@ -339,12 +328,6 @@ detail.addEventListener("click", e => {
   if (act === "close") closeCard();
   if (act === "next") openCard((active + 1) % N);
   if (act === "prev") openCard((active - 1 + N) % N);
-  if (act === "add") { picker.value = ""; picker.click(); }
-  if (act === "reset") {
-    clearSaved(LOOKS[active].n);
-    showReal(active, LOOKS[active].src);
-    btn.hidden = true;
-  }
 });
 
 window.addEventListener("keydown", e => {
@@ -355,31 +338,6 @@ window.addEventListener("keydown", e => {
 
 /* click empty space on the stage to close */
 stage.addEventListener("click", e => { if ((e.target === stage || e.target.closest(".core")) && active !== null) closeCard(); });
-
-/* ---------- local photo picker (resizes before saving) ---------- */
-picker.addEventListener("change", () => {
-  const file = picker.files && picker.files[0];
-  if (!file || active === null) return;
-  const idx = active;
-  const reader = new FileReader();
-  reader.onload = () => {
-    const tmp = new Image();
-    tmp.onload = () => {
-      const max = 1100, scale = Math.min(1, max / Math.max(tmp.width, tmp.height));
-      const c = document.createElement("canvas");
-      c.width = Math.round(tmp.width * scale);
-      c.height = Math.round(tmp.height * scale);
-      c.getContext("2d").drawImage(tmp, 0, 0, c.width, c.height);
-      const data = c.toDataURL("image/jpeg", 0.86);
-      save(LOOKS[idx].n, data);
-      showReal(idx, data);
-      const rb = $('[data-act="reset"]', detail);
-      if (rb && active === idx) rb.hidden = false;
-    };
-    tmp.src = reader.result;
-  };
-  reader.readAsDataURL(file);
-});
 
 /* ---------- layout switcher ---------- */
 document.querySelectorAll(".chip-btn").forEach(chip => {
@@ -425,10 +383,11 @@ $("#takeGrid").innerHTML = TAKEAWAYS.map((t, i) => `
   </div>`).join("");
 
 /* ---------- print sheet (all looks + details, used by "Save as PDF") ---------- */
-$("#printSheet").innerHTML = `<h1>${PROFILE.name} | Professional Image Portfolio</h1>` + LOOKS.map(l => `
+$("#printSheet").innerHTML = LOOKS.map((l, k) => `
   <article class="print-look">
     <img alt="" data-n="${l.n}" />
     <div>
+      ${k === 0 ? `<p class="print-title">${PROFILE.name} | Professional Image Portfolio</p>` : ""}
       <p class="p-tag">Look ${pad(l.n)} &middot; ${l.tag}</p>
       <h2>${l.name}</h2>
       <p class="p-purpose">${l.purpose}</p>
@@ -483,5 +442,3 @@ if ("IntersectionObserver" in window) {
 /* ---------- intro: photos fly out from the centre ---------- */
 requestAnimationFrame(() => setTimeout(() => layout(true), 150));
 setTimeout(() => cards.forEach(c => (c.style.transitionDelay = "0s")), 2400);
-
-
